@@ -21,4 +21,8 @@ Public Class menuPrincipal
     Private Sub btnVisualizarDatos_Click(sender As Object, e As EventArgs) Handles btnVisualizarDatos.Click
         visualizacion.Visible = True
     End Sub
+
+    Private Sub menuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

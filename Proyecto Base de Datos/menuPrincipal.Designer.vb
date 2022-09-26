@@ -32,54 +32,59 @@ Partial Class menuPrincipal
         '
         'btnRegistrar
         '
-        Me.btnRegistrar.Location = New System.Drawing.Point(12, 12)
+        Me.btnRegistrar.Location = New System.Drawing.Point(60, 38)
+        Me.btnRegistrar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnRegistrar.Name = "btnRegistrar"
-        Me.btnRegistrar.Size = New System.Drawing.Size(195, 57)
+        Me.btnRegistrar.Size = New System.Drawing.Size(223, 76)
         Me.btnRegistrar.TabIndex = 0
         Me.btnRegistrar.Text = "Registro de datos"
         Me.btnRegistrar.UseVisualStyleBackColor = True
         '
         'btnModificarDatos
         '
-        Me.btnModificarDatos.Location = New System.Drawing.Point(12, 75)
+        Me.btnModificarDatos.Location = New System.Drawing.Point(60, 122)
+        Me.btnModificarDatos.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnModificarDatos.Name = "btnModificarDatos"
-        Me.btnModificarDatos.Size = New System.Drawing.Size(195, 57)
+        Me.btnModificarDatos.Size = New System.Drawing.Size(223, 76)
         Me.btnModificarDatos.TabIndex = 1
         Me.btnModificarDatos.Text = "Modificar Datos"
         Me.btnModificarDatos.UseVisualStyleBackColor = True
         '
         'btnEliminarDatos
         '
-        Me.btnEliminarDatos.Location = New System.Drawing.Point(12, 138)
+        Me.btnEliminarDatos.Location = New System.Drawing.Point(60, 206)
+        Me.btnEliminarDatos.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnEliminarDatos.Name = "btnEliminarDatos"
-        Me.btnEliminarDatos.Size = New System.Drawing.Size(195, 57)
+        Me.btnEliminarDatos.Size = New System.Drawing.Size(223, 76)
         Me.btnEliminarDatos.TabIndex = 2
         Me.btnEliminarDatos.Text = "Eliminar Datos"
         Me.btnEliminarDatos.UseVisualStyleBackColor = True
         '
         'btnVisualizarDatos
         '
-        Me.btnVisualizarDatos.Location = New System.Drawing.Point(12, 201)
+        Me.btnVisualizarDatos.Location = New System.Drawing.Point(60, 290)
+        Me.btnVisualizarDatos.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnVisualizarDatos.Name = "btnVisualizarDatos"
-        Me.btnVisualizarDatos.Size = New System.Drawing.Size(195, 57)
+        Me.btnVisualizarDatos.Size = New System.Drawing.Size(223, 76)
         Me.btnVisualizarDatos.TabIndex = 3
         Me.btnVisualizarDatos.Text = "Visualizar Datos"
         Me.btnVisualizarDatos.UseVisualStyleBackColor = True
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(12, 264)
+        Me.btnSalir.Location = New System.Drawing.Point(60, 374)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(195, 57)
+        Me.btnSalir.Size = New System.Drawing.Size(223, 76)
         Me.btnSalir.TabIndex = 4
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
         'menuPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(218, 336)
+        Me.ClientSize = New System.Drawing.Size(360, 523)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnVisualizarDatos)
@@ -88,6 +93,7 @@ Partial Class menuPrincipal
         Me.Controls.Add(Me.btnRegistrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "menuPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu Principal"
