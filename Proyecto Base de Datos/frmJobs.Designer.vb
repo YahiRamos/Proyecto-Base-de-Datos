@@ -24,6 +24,8 @@ Partial Class frmJobs
     Private Sub InitializeComponent()
         Me.btnBackMenu = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtMaxSalary = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
@@ -38,8 +40,6 @@ Partial Class frmJobs
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
         Me.cbOpciones = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtMaxSalary = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -73,6 +73,22 @@ Partial Class frmJobs
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Campos de Datos"
+        '
+        'txtMaxSalary
+        '
+        Me.txtMaxSalary.Location = New System.Drawing.Point(108, 175)
+        Me.txtMaxSalary.Name = "txtMaxSalary"
+        Me.txtMaxSalary.Size = New System.Drawing.Size(164, 23)
+        Me.txtMaxSalary.TabIndex = 11
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 183)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(64, 15)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Max Salary"
         '
         'btnEliminar
         '
@@ -197,30 +213,16 @@ Partial Class frmJobs
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione una opción"
         '
-        'txtMaxSalary
-        '
-        Me.txtMaxSalary.Location = New System.Drawing.Point(108, 175)
-        Me.txtMaxSalary.Name = "txtMaxSalary"
-        Me.txtMaxSalary.Size = New System.Drawing.Size(164, 23)
-        Me.txtMaxSalary.TabIndex = 11
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 183)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 15)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Max Salary"
-        '
         'frmJobs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(308, 499)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnBackMenu)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmJobs"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Jobs"
