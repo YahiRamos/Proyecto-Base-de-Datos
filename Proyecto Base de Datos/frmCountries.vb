@@ -1,6 +1,5 @@
 ﻿Public Class frmCountries
     Private Sub frmCountries_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        menuPrincipal.Close()
         btnEliminar.Visible = False
         btnModificar.Visible = False
         btnRegistrar.Visible = False
