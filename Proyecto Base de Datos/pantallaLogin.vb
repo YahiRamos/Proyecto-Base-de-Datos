@@ -12,7 +12,7 @@ Public Class pantallaLogin
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim dataSource = "Data Source=XE;", userId = "User Id=", password As String
-        If txtUser.Text.ToLower.Equals("hr") And txtPassword.Text.Equals("hr") Then
+        If txtUser.Text.ToLower.Equals("hr") And txtPassword.Text.ToLower.Equals("hr") Then
             userId += txtUser.Text + ";"
             password = "Password=" + txtPassword.Text + ";"
             Dim connection = New OracleConnection(dataSource + userId + password)
