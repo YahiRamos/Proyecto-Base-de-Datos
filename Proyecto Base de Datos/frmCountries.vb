@@ -1,12 +1,7 @@
 ﻿Public Class frmCountries
     Private Sub frmCountries_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        btnEliminar.Visible = False
-        btnModificar.Visible = False
-        btnRegistrar.Visible = False
-        btnVerDatos.Visible = False
-        txtCountryId.Enabled = False
-        txtCountryName.Enabled = False
-        txtRegionId.Enabled = False
+        Dim userInterfaceUpdater As New UserInterfaceUpdater()
+        userInterfaceUpdater.defaultConfigFrmCountries()
     End Sub
 
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
