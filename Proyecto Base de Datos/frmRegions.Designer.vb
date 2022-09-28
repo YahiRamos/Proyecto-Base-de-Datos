@@ -68,7 +68,7 @@ Partial Class frmRegions
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(80, 133)
+        Me.btnEliminar.Location = New System.Drawing.Point(6, 155)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(128, 33)
         Me.btnEliminar.TabIndex = 9
@@ -77,7 +77,7 @@ Partial Class frmRegions
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(80, 133)
+        Me.btnModificar.Location = New System.Drawing.Point(156, 155)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(128, 33)
         Me.btnModificar.TabIndex = 8
@@ -86,7 +86,7 @@ Partial Class frmRegions
         '
         'btnRegistrar
         '
-        Me.btnRegistrar.Location = New System.Drawing.Point(80, 133)
+        Me.btnRegistrar.Location = New System.Drawing.Point(156, 117)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(128, 33)
         Me.btnRegistrar.TabIndex = 7
@@ -95,7 +95,7 @@ Partial Class frmRegions
         '
         'btnVerDatos
         '
-        Me.btnVerDatos.Location = New System.Drawing.Point(80, 133)
+        Me.btnVerDatos.Location = New System.Drawing.Point(6, 117)
         Me.btnVerDatos.Name = "btnVerDatos"
         Me.btnVerDatos.Size = New System.Drawing.Size(128, 33)
         Me.btnVerDatos.TabIndex = 6
@@ -106,14 +106,14 @@ Partial Class frmRegions
         '
         Me.txtRegionName.Location = New System.Drawing.Point(108, 84)
         Me.txtRegionName.Name = "txtRegionName"
-        Me.txtRegionName.Size = New System.Drawing.Size(164, 23)
+        Me.txtRegionName.Size = New System.Drawing.Size(164, 27)
         Me.txtRegionName.TabIndex = 4
         '
         'txtRegionId
         '
         Me.txtRegionId.Location = New System.Drawing.Point(108, 40)
         Me.txtRegionId.Name = "txtRegionId"
-        Me.txtRegionId.Size = New System.Drawing.Size(164, 23)
+        Me.txtRegionId.Size = New System.Drawing.Size(164, 27)
         Me.txtRegionId.TabIndex = 3
         '
         'Label3
@@ -121,7 +121,7 @@ Partial Class frmRegions
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(6, 92)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 15)
+        Me.Label3.Size = New System.Drawing.Size(100, 20)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Region Name"
         '
@@ -130,7 +130,7 @@ Partial Class frmRegions
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 43)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 15)
+        Me.Label2.Size = New System.Drawing.Size(75, 20)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Region ID"
         '
@@ -161,7 +161,7 @@ Partial Class frmRegions
         Me.cbOpciones.Items.AddRange(New Object() {"Agregar Registro", "Modificar Registro", "Ver Registro", "Eliminar Registro"})
         Me.cbOpciones.Location = New System.Drawing.Point(151, 31)
         Me.cbOpciones.Name = "cbOpciones"
-        Me.cbOpciones.Size = New System.Drawing.Size(121, 23)
+        Me.cbOpciones.Size = New System.Drawing.Size(121, 28)
         Me.cbOpciones.TabIndex = 1
         '
         'Label1
@@ -169,7 +169,7 @@ Partial Class frmRegions
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 15)
+        Me.Label1.Size = New System.Drawing.Size(158, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione una opción"
         '
