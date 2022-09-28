@@ -1,6 +1,9 @@
-﻿Public Class frmJobs
+﻿Imports System.Data.SqlClient
+Imports Oracle.DataAccess.Client
+Public Class frmJobs
+
+    Dim userInterfaceUpdater As New UserInterfaceUpdater()
     Private Sub frmJobs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim userInterfaceUpdater As New UserInterfaceUpdater()
         userInterfaceUpdater.defaultConfigFrmJobs()
     End Sub
 
@@ -14,26 +17,11 @@
     End Sub
 
     Private Sub btnSeleccionarOpcion_Click(sender As Object, e As EventArgs) Handles btnSeleccionarOpcion.Click
-        Dim opcion As String
-        opcion = cbOpciones.SelectedItem.ToString
-        If opcion.Equals("Ver Registro") Then
-            btnVerDatos.Visible = True
-            txtJobId.Enabled = True
-        ElseIf opcion.Equals("Agregar Registro") Then
-            btnRegistrar.Visible = True
-            txtJobId.Enabled = True
-            txtJobTitle.Enabled = True
-            txtMaxSalary.Enabled = True
-            txtMinSalary.Enabled = True
-        ElseIf opcion.Equals("Modificar Registro") Then
-            btnModificar.Visible = True
-            txtJobId.Enabled = True
-            txtJobTitle.Enabled = True
-            txtMaxSalary.Enabled = True
-            txtMinSalary.Enabled = True
-        ElseIf opcion.Equals("Eliminar Registro") Then
-            btnEliminar.Visible = True
-            txtJobId.Enabled = True
-        End If
+        userInterfaceUpdater.defaultConfigFrmJobs()
+        userInterfaceUpdater.selectionButtonConfigFrmJobs()
+    End Sub
+
+    Private Sub btnClean_Click(sender As Object, e As EventArgs) Handles btnClean.Click
+        userInterfaceUpdater.defaultConfigFrmJobs()
     End Sub
 End Class

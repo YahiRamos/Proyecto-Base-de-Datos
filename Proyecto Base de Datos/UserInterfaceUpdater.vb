@@ -1,4 +1,6 @@
-﻿Public Class UserInterfaceUpdater
+﻿Imports System.Windows.Forms.Design.AxImporter
+
+Public Class UserInterfaceUpdater
     Public Sub defaultConfigFrmJobs()
 
         frmJobs.btnEliminar.Visible = False
@@ -9,6 +11,11 @@
         frmJobs.txtJobTitle.Enabled = False
         frmJobs.txtMaxSalary.Enabled = False
         frmJobs.txtMinSalary.Enabled = False
+        frmJobs.txtJobId.Clear()
+        frmJobs.txtJobTitle.Clear()
+        frmJobs.txtMaxSalary.Clear()
+        frmJobs.txtMinSalary.Clear()
+
     End Sub
 
     Public Sub defaultConfigFrmCountries()
@@ -86,5 +93,49 @@
         frmRegions.btnVerDatos.Visible = False
         frmRegions.txtRegionId.Enabled = False
         frmRegions.txtRegionName.Enabled = False
+    End Sub
+
+    Public Sub selectionButtonConfigFrmJobs()
+        Dim opcion As String
+        opcion = frmJobs.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmJobs.btnVerDatos.Visible = True
+            frmJobs.txtJobId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmJobs.btnRegistrar.Visible = True
+            frmJobs.txtJobId.Enabled = True
+            frmJobs.txtJobTitle.Enabled = True
+            frmJobs.txtMaxSalary.Enabled = True
+            frmJobs.txtMinSalary.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmJobs.btnModificar.Visible = True
+            frmJobs.txtJobId.Enabled = True
+            frmJobs.txtJobTitle.Enabled = True
+            frmJobs.txtMaxSalary.Enabled = True
+            frmJobs.txtMinSalary.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmJobs.btnEliminar.Visible = True
+            frmJobs.txtJobId.Enabled = True
+        End If
+    End Sub
+
+    Public Sub selectionButtonConfigFrmRegions()
+        Dim opcion As String
+        opcion = frmRegions.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmRegions.btnVerDatos.Visible = True
+            frmRegions.txtRegionId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmRegions.btnRegistrar.Visible = True
+            frmRegions.txtRegionId.Enabled = True
+            frmRegions.txtRegionName.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmRegions.btnModificar.Visible = True
+            frmRegions.txtRegionId.Enabled = True
+            frmRegions.txtRegionName.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmRegions.btnEliminar.Visible = True
+            frmRegions.txtRegionId.Enabled = True
+        End If
     End Sub
 End Class
