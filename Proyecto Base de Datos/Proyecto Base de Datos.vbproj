@@ -7,20 +7,44 @@
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <ApplicationIcon>users.ico</ApplicationIcon>
+    <Platforms>x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="users.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic.Devices" />
+    <Import Include="Microsoft.VisualBasic.FileIO" />
+    <Import Include="Microsoft.VisualBasic.Logging" />
+    <Import Include="Microsoft.VisualBasic.MyServices" />
     <Import Include="Microsoft.VisualBasic.MyServices.Internal" />
     <Import Include="Microsoft.Win32" />
     <Import Include="Microsoft.Win32.SafeHandles" />
+    <Import Include="Oracle.DataAccess.Client" />
+    <Import Include="Oracle.DataAccess.Types" />
     <Import Include="System.Data" />
     <Import Include="System.Data.OleDb" />
     <Import Include="System.Data.OracleClient" />
@@ -29,9 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess">
-      <HintPath>..\..\..\..\..\..\oraclexe\app\oracle\product\10.2.0\server\BIN\Oracle.DataAccess.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.70" />
   </ItemGroup>
 
   <ItemGroup>
