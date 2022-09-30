@@ -93,6 +93,8 @@ Public Class UserInterfaceUpdater
         frmRegions.btnVerDatos.Visible = False
         frmRegions.txtRegionId.Enabled = False
         frmRegions.txtRegionName.Enabled = False
+        frmRegions.txtRegionId.Clear()
+        frmRegions.txtRegionName.Clear()
     End Sub
 
     Public Sub selectionButtonConfigFrmJobs()
@@ -127,9 +129,8 @@ Public Class UserInterfaceUpdater
             frmRegions.txtRegionId.Enabled = True
             frmRegions.txtRegionName.Enabled = True
         ElseIf opcion.Equals("Modificar Registro") Then
-            frmRegions.btnModificar.Visible = True
+            frmRegions.btnVerDatos.Visible = True
             frmRegions.txtRegionId.Enabled = True
-            frmRegions.txtRegionName.Enabled = True
         ElseIf opcion.Equals("Eliminar Registro") Then
             frmRegions.btnEliminar.Visible = True
             frmRegions.txtRegionId.Enabled = True

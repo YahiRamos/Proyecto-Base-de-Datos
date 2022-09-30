@@ -69,7 +69,7 @@ Partial Class frmRegions
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(80, 133)
+        Me.btnEliminar.Location = New System.Drawing.Point(80, 144)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(128, 33)
         Me.btnEliminar.TabIndex = 9
@@ -78,7 +78,7 @@ Partial Class frmRegions
         '
         'btnModificar
         '
-        Me.btnModificar.Location = New System.Drawing.Point(80, 133)
+        Me.btnModificar.Location = New System.Drawing.Point(80, 144)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(128, 33)
         Me.btnModificar.TabIndex = 8
@@ -87,7 +87,7 @@ Partial Class frmRegions
         '
         'btnRegistrar
         '
-        Me.btnRegistrar.Location = New System.Drawing.Point(80, 133)
+        Me.btnRegistrar.Location = New System.Drawing.Point(80, 144)
         Me.btnRegistrar.Name = "btnRegistrar"
         Me.btnRegistrar.Size = New System.Drawing.Size(128, 33)
         Me.btnRegistrar.TabIndex = 7
@@ -96,7 +96,7 @@ Partial Class frmRegions
         '
         'btnVerDatos
         '
-        Me.btnVerDatos.Location = New System.Drawing.Point(80, 133)
+        Me.btnVerDatos.Location = New System.Drawing.Point(80, 144)
         Me.btnVerDatos.Name = "btnVerDatos"
         Me.btnVerDatos.Size = New System.Drawing.Size(128, 33)
         Me.btnVerDatos.TabIndex = 6
