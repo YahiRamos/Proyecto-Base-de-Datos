@@ -108,11 +108,8 @@ Public Class UserInterfaceUpdater
             frmJobs.txtMaxSalary.Enabled = True
             frmJobs.txtMinSalary.Enabled = True
         ElseIf opcion.Equals("Modificar Registro") Then
-            frmJobs.btnModificar.Visible = True
+            frmJobs.btnVerDatos.Visible = True
             frmJobs.txtJobId.Enabled = True
-            frmJobs.txtJobTitle.Enabled = True
-            frmJobs.txtMaxSalary.Enabled = True
-            frmJobs.txtMinSalary.Enabled = True
         ElseIf opcion.Equals("Eliminar Registro") Then
             frmJobs.btnEliminar.Visible = True
             frmJobs.txtJobId.Enabled = True

@@ -27,8 +27,8 @@ Partial Class frmJobs
         Me.txtMaxSalary = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnRegistrar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
         Me.btnVerDatos = New System.Windows.Forms.Button()
         Me.txtMinSalary = New System.Windows.Forms.TextBox()
         Me.txtJobTitle = New System.Windows.Forms.TextBox()
@@ -100,15 +100,6 @@ Partial Class frmJobs
         Me.btnEliminar.Text = "Eliminar Datos"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
-        'btnModificar
-        '
-        Me.btnModificar.Location = New System.Drawing.Point(80, 231)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(128, 33)
-        Me.btnModificar.TabIndex = 8
-        Me.btnModificar.Text = "Modificar Datos"
-        Me.btnModificar.UseVisualStyleBackColor = True
-        '
         'btnRegistrar
         '
         Me.btnRegistrar.Location = New System.Drawing.Point(80, 231)
@@ -117,6 +108,15 @@ Partial Class frmJobs
         Me.btnRegistrar.TabIndex = 7
         Me.btnRegistrar.Text = "Registrar Datos"
         Me.btnRegistrar.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(80, 231)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(128, 33)
+        Me.btnModificar.TabIndex = 8
+        Me.btnModificar.Text = "Modificar Datos"
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'btnVerDatos
         '
