@@ -24,6 +24,7 @@ Partial Class frmCountries
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.brnClean = New System.Windows.Forms.Button()
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
         Me.cbOpciones = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -53,6 +54,7 @@ Partial Class frmCountries
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.brnClean)
         Me.GroupBox1.Controls.Add(Me.btnSeleccionarOpcion)
         Me.GroupBox1.Controls.Add(Me.cbOpciones)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -63,9 +65,18 @@ Partial Class frmCountries
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Accion a Realizar"
         '
+        'brnClean
+        '
+        Me.brnClean.Location = New System.Drawing.Point(10, 92)
+        Me.brnClean.Name = "brnClean"
+        Me.brnClean.Size = New System.Drawing.Size(128, 37)
+        Me.brnClean.TabIndex = 3
+        Me.brnClean.Text = "Limpiar Campos"
+        Me.brnClean.UseVisualStyleBackColor = True
+        '
         'btnSeleccionarOpcion
         '
-        Me.btnSeleccionarOpcion.Location = New System.Drawing.Point(80, 92)
+        Me.btnSeleccionarOpcion.Location = New System.Drawing.Point(144, 92)
         Me.btnSeleccionarOpcion.Name = "btnSeleccionarOpcion"
         Me.btnSeleccionarOpcion.Size = New System.Drawing.Size(128, 37)
         Me.btnSeleccionarOpcion.TabIndex = 2
@@ -230,4 +241,5 @@ Partial Class frmCountries
     Friend WithEvents btnVerDatos As Button
     Friend WithEvents btnBackMenu As Button
     Friend WithEvents btnEliminar As Button
+    Friend WithEvents brnClean As Button
 End Class

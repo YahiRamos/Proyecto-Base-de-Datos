@@ -6,7 +6,6 @@ Public Class frmRegions
     Dim userInterfaceUpdater As New UserInterfaceUpdater()
     Dim conection = New OracleConnection("Data Source = 127.0.0.1;User ID=hr;Password=hr;")
     Private Sub frmRegions_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         userInterfaceUpdater.defaultConfigFrmRegions()
     End Sub
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click

@@ -27,6 +27,9 @@ Public Class UserInterfaceUpdater
         frmCountries.txtCountryId.Enabled = False
         frmCountries.txtCountryName.Enabled = False
         frmCountries.txtRegionId.Enabled = False
+        frmCountries.txtCountryId.Clear()
+        frmCountries.txtCountryName.Clear()
+        frmCountries.txtRegionId.Clear()
     End Sub
 
     Public Sub defaultConfigFrmDepartments()
@@ -39,6 +42,10 @@ Public Class UserInterfaceUpdater
         frmDepartments.txtDepartmentName.Enabled = False
         frmDepartments.txtLocationId.Enabled = False
         frmDepartments.txtManagerId.Enabled = False
+        frmDepartments.txtManagerId.Clear()
+        frmDepartments.txtDepartmentId.Clear()
+        frmDepartments.txtDepartmentName.Clear()
+        frmDepartments.txtLocationId.Clear()
     End Sub
 
     Public Sub defaultConfigFrmEmployees()
@@ -58,6 +65,17 @@ Public Class UserInterfaceUpdater
         frmEmployees.txtManagerId.Enabled = False
         frmEmployees.txtPhoneNumber.Enabled = False
         frmEmployees.txtSalary.Enabled = False
+        frmEmployees.txtCommissionPct.Clear()
+        frmEmployees.txtDepartmentId.Clear()
+        frmEmployees.txtEmail.Clear()
+        frmEmployees.txtEmployeeId.Clear()
+        frmEmployees.txtFirstName.Clear()
+        frmEmployees.txtHireDate.Clear()
+        frmEmployees.txtJobId.Clear()
+        frmEmployees.txtLastName.Clear()
+        frmEmployees.txtManagerId.Clear()
+        frmEmployees.txtPhoneNumber.Clear()
+        frmEmployees.txtSalary.Clear()
     End Sub
 
     Public Sub defaultConfigFrmJobHistory()
@@ -71,6 +89,11 @@ Public Class UserInterfaceUpdater
         frmJobHistory.txtEndDate.Enabled = False
         frmJobHistory.txtJobId.Enabled = False
         frmJobHistory.txtStartDate.Enabled = False
+        frmJobHistory.txtDepartmentId.Clear()
+        frmJobHistory.txtEmployeeId.Clear()
+        frmJobHistory.txtEndDate.Clear()
+        frmJobHistory.txtJobId.Clear()
+        frmJobHistory.txtStartDate.Clear()
     End Sub
 
     Public Sub defaultConfigFrmLocations()
@@ -84,6 +107,12 @@ Public Class UserInterfaceUpdater
         frmLocations.txtPostalCode.Enabled = False
         frmLocations.txtStateProvince.Enabled = False
         frmLocations.txtStreetAddress.Enabled = False
+        frmLocations.txtCity.Clear()
+        frmLocations.txtCountryId.Clear()
+        frmLocations.txtLocationId.Clear()
+        frmLocations.txtPostalCode.Clear()
+        frmLocations.txtStateProvince.Clear()
+        frmLocations.txtStreetAddress.Clear()
     End Sub
 
     Public Sub defaultConfigFrmRegions()
@@ -134,6 +163,26 @@ Public Class UserInterfaceUpdater
         ElseIf opcion.Equals("Eliminar Registro") Then
             frmRegions.btnEliminar.Visible = True
             frmRegions.txtRegionId.Enabled = True
+        End If
+    End Sub
+
+    Public Sub selectionButtonConfigFrmCountries()
+        Dim opcion As String
+        opcion = frmCountries.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmCountries.btnVerDatos.Visible = True
+            frmCountries.txtCountryId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmCountries.btnRegistrar.Visible = True
+            frmCountries.txtCountryId.Enabled = True
+            frmCountries.txtCountryName.Enabled = True
+            frmCountries.txtRegionId.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmCountries.btnVerDatos.Visible = True
+            frmCountries.txtCountryId.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmCountries.btnEliminar.Visible = True
+            frmCountries.txtCountryId.Enabled = True
         End If
     End Sub
 End Class
