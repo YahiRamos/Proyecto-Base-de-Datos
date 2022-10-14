@@ -185,4 +185,102 @@ Public Class UserInterfaceUpdater
             frmCountries.txtCountryId.Enabled = True
         End If
     End Sub
+
+    Public Sub selectionButtonConfigFrmLocations()
+        Dim opcion As String
+        opcion = frmLocations.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmLocations.btnVerDatos.Visible = True
+            frmLocations.txtLocationId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmLocations.btnRegistrar.Visible = True
+            frmLocations.txtLocationId.Enabled = True
+            frmLocations.txtCity.Enabled = True
+            frmLocations.txtCountryId.Enabled = True
+            frmLocations.txtPostalCode.Enabled = True
+            frmLocations.txtStateProvince.Enabled = True
+            frmLocations.txtStreetAddress.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmLocations.btnVerDatos.Visible = True
+            frmLocations.txtLocationId.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmLocations.btnEliminar.Visible = True
+            frmLocations.txtLocationId.Enabled = True
+        End If
+    End Sub
+
+    Public Sub selectionButtonConfigFrmDepartments()
+        Dim opcion As String
+        opcion = frmDepartments.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmDepartments.btnVerDatos.Visible = True
+            frmDepartments.txtDepartmentId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmDepartments.btnRegistrar.Visible = True
+            frmDepartments.txtDepartmentId.Enabled = True
+            frmDepartments.txtDepartmentName.Enabled = True
+            frmDepartments.txtLocationId.Enabled = True
+            frmDepartments.txtManagerId.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmDepartments.btnVerDatos.Visible = True
+            frmDepartments.txtDepartmentId.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmDepartments.btnEliminar.Visible = True
+            frmDepartments.txtDepartmentId.Enabled = True
+        End If
+    End Sub
+
+    Public Sub selectionButtonConfigFrmEmployees()
+        Dim opcion As String
+        opcion = frmEmployees.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmEmployees.btnVerDatos.Visible = True
+            frmEmployees.txtEmployeeId.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmEmployees.btnRegistrar.Visible = True
+            frmEmployees.txtCommissionPct.Enabled = True
+            frmEmployees.txtDepartmentId.Enabled = True
+            frmEmployees.txtEmail.Enabled = True
+            frmEmployees.txtEmployeeId.Enabled = True
+            frmEmployees.txtFirstName.Enabled = True
+            frmEmployees.txtHireDate.Enabled = True
+            frmEmployees.txtJobId.Enabled = True
+            frmEmployees.txtLastName.Enabled = True
+            frmEmployees.txtManagerId.Enabled = True
+            frmEmployees.txtPhoneNumber.Enabled = True
+            frmEmployees.txtSalary.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmEmployees.btnVerDatos.Visible = True
+            frmEmployees.txtEmployeeId.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmEmployees.btnEliminar.Visible = True
+            frmEmployees.txtEmployeeId.Enabled = True
+        End If
+    End Sub
+
+    Public Sub selectionButtonConfigFrmJobHistory()
+        Dim opcion As String
+        opcion = frmJobHistory.cbOpciones.SelectedItem.ToString
+        If opcion.Equals("Ver Registro") Then
+            frmJobHistory.btnVerDatos.Visible = True
+            frmJobHistory.txtEmployeeId.Enabled = True
+            frmJobHistory.txtStartDate.Enabled = True
+        ElseIf opcion.Equals("Agregar Registro") Then
+            frmJobHistory.btnRegistrar.Visible = True
+            frmJobHistory.txtDepartmentId.Enabled = True
+            frmJobHistory.txtEmployeeId.Enabled = True
+            frmJobHistory.txtEndDate.Enabled = True
+            frmJobHistory.txtJobId.Enabled = True
+            frmJobHistory.txtStartDate.Enabled = True
+        ElseIf opcion.Equals("Modificar Registro") Then
+            frmJobHistory.btnVerDatos.Visible = True
+            frmJobHistory.txtEmployeeId.Enabled = True
+            frmJobHistory.txtStartDate.Enabled = True
+        ElseIf opcion.Equals("Eliminar Registro") Then
+            frmJobHistory.btnEliminar.Visible = True
+            frmJobHistory.txtEmployeeId.Enabled = True
+            frmJobHistory.txtStartDate.Enabled = True
+        End If
+    End Sub
+
 End Class
