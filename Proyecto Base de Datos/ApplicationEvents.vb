@@ -1,4 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.ApplicationServices
+Imports System.Runtime.InteropServices.ImportedFromTypeLibAttribute
+Imports Oracle.ManagedDataAccess.Client
+Imports System.Data.OracleClient
 
 Namespace My
     ' The following events are available for MyApplication:

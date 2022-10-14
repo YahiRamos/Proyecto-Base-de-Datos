@@ -41,8 +41,4 @@ Public Class menuPrincipal
         frmJobs.Visible = True
         Hide()
     End Sub
-
-    Private Sub menuPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
