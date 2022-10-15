@@ -1,7 +1,5 @@
 ﻿Imports Oracle.ManagedDataAccess.Client
-Imports System.Data.OracleClient
-Imports System.Diagnostics.Eventing
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
 
 Public Class frmJobs
 

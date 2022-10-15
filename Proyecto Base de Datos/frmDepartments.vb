@@ -1,5 +1,4 @@
-﻿Imports System.Collections.ObjectModel
-Imports Oracle.ManagedDataAccess.Client
+﻿Imports Oracle.ManagedDataAccess.Client
 
 Public Class frmDepartments
 
@@ -81,7 +80,6 @@ Public Class frmDepartments
             txtManagerId.Text = dataReader.GetValue("manager_id").ToString
             txtLocationId.Text = dataReader.GetValue("location_id").ToString
         End If
-        conection.Close
         Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtDepartmentName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
         If selection.Yes Then
             Try
