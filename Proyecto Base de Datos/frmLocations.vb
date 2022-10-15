@@ -5,7 +5,6 @@ Public Class frmLocations
     Dim userInterfaceUpdater As New UserInterfaceUpdater()
     Dim conection = New OracleConnection("Data Source = 127.0.0.1;User ID=hr;Password=hr;")
     Private Sub frmLocations_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim userInterfaceUpdater As New UserInterfaceUpdater()
         userInterfaceUpdater.defaultConfigFrmLocations()
     End Sub
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
