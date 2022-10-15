@@ -8,7 +8,6 @@ Public Class frmJobs
 
     Private Sub frmJobs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         userInterfaceUpdater.defaultConfigFrmJobs()
-
     End Sub
 
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
