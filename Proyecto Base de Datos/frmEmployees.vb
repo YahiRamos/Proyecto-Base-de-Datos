@@ -41,22 +41,26 @@ Public Class frmEmployees
             txtPhoneNumber.Text = dataReader.GetValue("PHONE_NUMBER").ToString
             txtSalary.Text = dataReader.GetValue("SALARY").ToString
         End If
-        conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtCommissionPct.Enabled = True
-            txtDepartmentId.Enabled = True
-            txtEmail.Enabled = True
-            txtFirstName.Enabled = True
-            txtHireDate.Enabled = True
-            txtJobId.Enabled = True
-            txtLastName.Enabled = True
-            txtManagerId.Enabled = True
-            txtPhoneNumber.Enabled = True
-            txtSalary.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
+        If txtFirstName.Text = "" And txtLastName.Text = "" Then
+            MessageBox.Show("Datos no enconrados")
+        Else
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtCommissionPct.Enabled = True
+                txtDepartmentId.Enabled = True
+                txtEmail.Enabled = True
+                txtFirstName.Enabled = True
+                txtHireDate.Enabled = True
+                txtJobId.Enabled = True
+                txtLastName.Enabled = True
+                txtManagerId.Enabled = True
+                txtPhoneNumber.Enabled = True
+                txtSalary.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
         End If
+        conection.Close
     End Sub
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
@@ -105,18 +109,60 @@ Public Class frmEmployees
             txtPhoneNumber.Text = dataReader.GetValue("PHONE_NUMBER").ToString
             txtSalary.Text = dataReader.GetValue("SALARY").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtEmployeeId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM employees WHERE employee_id=" & txtEmployeeId.Text, conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtFirstName.Text = "" And txtLastName.Text = "" Then
+            MessageBox.Show("Datos no enconrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtFirstName.Text &
+                              " " & txtLastName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.No Or selection.Cancel Then
+                MessageBox.Show("Operación cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM employees WHERE employee_id=" & txtEmployeeId.Text, conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
         conection.Close
+    End Sub
+
+    Private Sub txtEmployeeId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEmployeeId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtSalary_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSalary.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtCommissionPct_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCommissionPct.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtManagerId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtManagerId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtDepartmentId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDepartmentId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

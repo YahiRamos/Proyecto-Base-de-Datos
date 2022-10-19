@@ -37,10 +37,10 @@ Partial Class frmDepartments
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnClean = New System.Windows.Forms.Button()
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
         Me.cbOpciones = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnClean = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -189,6 +189,15 @@ Partial Class frmDepartments
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Accion a Realizar"
         '
+        'btnClean
+        '
+        Me.btnClean.Location = New System.Drawing.Point(10, 92)
+        Me.btnClean.Name = "btnClean"
+        Me.btnClean.Size = New System.Drawing.Size(128, 37)
+        Me.btnClean.TabIndex = 3
+        Me.btnClean.Text = "Limpiar Campos"
+        Me.btnClean.UseVisualStyleBackColor = True
+        '
         'btnSeleccionarOpcion
         '
         Me.btnSeleccionarOpcion.Location = New System.Drawing.Point(144, 92)
@@ -215,15 +224,6 @@ Partial Class frmDepartments
         Me.Label1.Size = New System.Drawing.Size(126, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione una opción"
-        '
-        'btnClean
-        '
-        Me.btnClean.Location = New System.Drawing.Point(10, 92)
-        Me.btnClean.Name = "btnClean"
-        Me.btnClean.Size = New System.Drawing.Size(128, 37)
-        Me.btnClean.TabIndex = 3
-        Me.btnClean.Text = "Limpiar Campos"
-        Me.btnClean.UseVisualStyleBackColor = True
         '
         'frmDepartments
         '

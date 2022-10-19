@@ -26,15 +26,19 @@ Public Class frmJobs
             txtMinSalary.Text = dataReader.GetValue("min_salary").ToString
             txtMaxSalary.Text = dataReader.GetValue("max_salary").ToString
         End If
-        conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtJobTitle.Enabled = True
-            txtMaxSalary.Enabled = True
-            txtMinSalary.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
+        If txtJobTitle.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtJobTitle.Enabled = True
+                txtMaxSalary.Enabled = True
+                txtMinSalary.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
         End If
+        conection.Close
     End Sub
 
     Private Sub btnSeleccionarOpcion_Click(sender As Object, e As EventArgs) Handles btnSeleccionarOpcion.Click
@@ -58,17 +62,23 @@ Public Class frmJobs
             txtMinSalary.Text = dataReader.GetValue("min_salary").ToString
             txtMaxSalary.Text = dataReader.GetValue("max_salary").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtJobId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM jobs WHERE job_id='" & txtJobId.Text & "'", conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtJobTitle.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtJobId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.No Or selection.Cancel Then
+                MessageBox.Show("Operación cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM jobs WHERE job_id='" & txtJobId.Text & "'", conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
         conection.Close
     End Sub
@@ -93,5 +103,19 @@ Public Class frmJobs
         Catch ex As Exception
             MessageBox.Show("Error al actualizar registro", "Actualizar Registro")
         End Try
+    End Sub
+
+    Private Sub txtMinSalary_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMinSalary.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtMaxSalary_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMaxSalary.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

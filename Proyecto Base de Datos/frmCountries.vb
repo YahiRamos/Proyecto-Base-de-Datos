@@ -33,15 +33,20 @@ Public Class frmCountries
         If dataReader.Read Then
             txtCountryName.Text = dataReader.GetValue("country_name").ToString
             txtRegionId.Text = dataReader.GetValue("region_id").ToString
+
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtCountryName.Enabled = True
+                txtRegionId.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
+        End If
+        If txtCountryName.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
         End If
         conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtCountryName.Enabled = True
-            txtRegionId.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
-        End If
+
     End Sub
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
@@ -77,18 +82,31 @@ Public Class frmCountries
             txtCountryName.Text = dataReader.GetValue("country_name").ToString
             txtRegionId.Text = dataReader.GetValue("region_id").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtCountryName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM countries WHERE country_id=" & "'" & txtCountryId.Text & "'", conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtCountryName.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtCountryName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.No Or selection.Cancel Then
+                MessageBox.Show("Operación cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM countries WHERE country_id=" & "'" & txtCountryId.Text & "'", conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
-        conection.Close()
+        conection.Close
+    End Sub
+
+    Private Sub txtRegionId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRegionId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

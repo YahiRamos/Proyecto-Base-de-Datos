@@ -35,15 +35,20 @@ Public Class frmDepartments
             txtManagerId.Text = dataReader.GetValue("manager_id").ToString
             txtLocationId.Text = dataReader.GetValue("location_id").ToString
         End If
-        conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtDepartmentName.Enabled = True
-            txtLocationId.Enabled = True
-            txtManagerId.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
+        If txtDepartmentName.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtDepartmentName.Enabled = True
+                txtLocationId.Enabled = True
+                txtManagerId.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
         End If
+        conection.Close
+
     End Sub
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
@@ -80,18 +85,45 @@ Public Class frmDepartments
             txtManagerId.Text = dataReader.GetValue("manager_id").ToString
             txtLocationId.Text = dataReader.GetValue("location_id").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtDepartmentName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM departments WHERE department_id=" & txtDepartmentId.Text, conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtDepartmentName.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtDepartmentName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.No Or selection.Cancel Then
+                MessageBox.Show("Operación cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM departments WHERE department_id=" & txtDepartmentId.Text, conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
         conection.Close
+    End Sub
+
+    Private Sub txtDepartmentId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDepartmentId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtManagerId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtManagerId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtLocationId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLocationId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

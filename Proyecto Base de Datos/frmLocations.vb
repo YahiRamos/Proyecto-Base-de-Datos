@@ -35,17 +35,21 @@ Public Class frmLocations
             txtStateProvince.Text = dataReader.GetValue("state_province").ToString
             txtStreetAddress.Text = dataReader.GetValue("street_address").ToString
         End If
-        conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtCity.Enabled = True
-            txtCountryId.Enabled = True
-            txtPostalCode.Enabled = True
-            txtStateProvince.Enabled = True
-            txtStreetAddress.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
+        If txtCity.Text = "" And txtStateProvince.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtCity.Enabled = True
+                txtCountryId.Enabled = True
+                txtPostalCode.Enabled = True
+                txtStateProvince.Enabled = True
+                txtStreetAddress.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
         End If
+        conection.Close
     End Sub
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
@@ -68,6 +72,7 @@ Public Class frmLocations
         Catch ex As Exception
             MessageBox.Show("Error al actualizar registro", "Actualizar Registro")
         End Try
+        conection.Close
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
@@ -83,18 +88,31 @@ Public Class frmLocations
             txtStateProvince.Text = dataReader.GetValue("state_province").ToString
             txtStreetAddress.Text = dataReader.GetValue("street_address").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtLocationId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM locations WHERE location_id=" & txtLocationId.Text, conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtCity.Text = "" And txtStateProvince.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtLocationId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.Cancel Or selection.No Then
+                MessageBox.Show("Operacion cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM locations WHERE location_id=" & txtLocationId.Text, conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
         conection.Close
+    End Sub
+
+    Private Sub txtLocationId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLocationId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

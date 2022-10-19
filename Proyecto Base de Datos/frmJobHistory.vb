@@ -33,15 +33,19 @@ Public Class frmJobHistory
             txtEndDate.Text = dataReader.GetValue("end_date").ToString
             txtJobId.Text = dataReader.GetValue("job_id").ToString
         End If
-        conection.Close
-        If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
-            btnVerDatos.Visible = False
-            btnModificar.Visible = True
-            txtDepartmentId.Enabled = True
-            txtEndDate.Enabled = True
-            txtJobId.Enabled = True
-            MessageBox.Show("Datos encontrados", "Actualizar Registro")
+        If txtDepartmentId.Text = "" And txtEndDate.Text = "" And txtJobId.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
+                btnVerDatos.Visible = False
+                btnModificar.Visible = True
+                txtDepartmentId.Enabled = True
+                txtEndDate.Enabled = True
+                txtJobId.Enabled = True
+                MessageBox.Show("Datos encontrados", "Actualizar Registro")
+            End If
         End If
+        conection.Close
     End Sub
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
@@ -77,18 +81,38 @@ Public Class frmJobHistory
             txtEndDate.Text = dataReader.GetValue("end_date").ToString
             txtJobId.Text = dataReader.GetValue("job_id").ToString
         End If
-        Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtEmployeeId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-        If selection.Yes Then
-            Try
-                command = New OracleCommand("DELETE FROM job_history WHERE employee_id=" & txtEmployeeId.Text & " AND start_date='" & txtStartDate.Text & "'", conection)
-                Dim dataAdapter = New OracleDataAdapter
-                dataAdapter.DeleteCommand = command
-                dataAdapter.DeleteCommand.ExecuteNonQuery()
-                MessageBox.Show("El registro ha sido eliminado correctamente")
-            Catch ex As Exception
-                MessageBox.Show("ERROR: El registro no ha podido eliminar")
-            End Try
+        If txtDepartmentId.Text = "" And txtEndDate.Text = "" And txtJobId.Text = "" Then
+            MessageBox.Show("Datos no encontrados")
+        Else
+            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtEmployeeId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection.No Or selection.Cancel Then
+                MessageBox.Show("Operación cancelada")
+            Else
+                Try
+                    command = New OracleCommand("DELETE FROM job_history WHERE employee_id=" & txtEmployeeId.Text & " AND start_date='" & txtStartDate.Text & "'", conection)
+                    Dim dataAdapter = New OracleDataAdapter
+                    dataAdapter.DeleteCommand = command
+                    dataAdapter.DeleteCommand.ExecuteNonQuery()
+                    MessageBox.Show("El registro ha sido eliminado correctamente")
+                Catch ex As Exception
+                    MessageBox.Show("ERROR: El registro no ha podido eliminar")
+                End Try
+            End If
         End If
         conection.Close
+    End Sub
+
+    Private Sub txtEmployeeId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEmployeeId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
+    End Sub
+
+    Private Sub txtDepartmentId_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDepartmentId.KeyPress
+        e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
+        End If
     End Sub
 End Class

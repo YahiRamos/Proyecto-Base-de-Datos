@@ -27,6 +27,7 @@ Partial Class frmEmployees
         Me.txtHireDate = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtDepartmentId = New System.Windows.Forms.TextBox()
+        Me.btnModificar = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtManagerId = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -49,7 +50,6 @@ Partial Class frmEmployees
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnModificar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnClean = New System.Windows.Forms.Button()
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
@@ -125,6 +125,15 @@ Partial Class frmEmployees
         Me.txtDepartmentId.Name = "txtDepartmentId"
         Me.txtDepartmentId.Size = New System.Drawing.Size(157, 23)
         Me.txtDepartmentId.TabIndex = 23
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(447, 272)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(157, 52)
+        Me.btnModificar.TabIndex = 8
+        Me.btnModificar.Text = "Modificar Datos"
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'Label7
         '
@@ -307,15 +316,6 @@ Partial Class frmEmployees
         Me.Label2.Size = New System.Drawing.Size(73, 15)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Employee ID"
-        '
-        'btnModificar
-        '
-        Me.btnModificar.Location = New System.Drawing.Point(447, 272)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(157, 52)
-        Me.btnModificar.TabIndex = 8
-        Me.btnModificar.Text = "Modificar Datos"
-        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
