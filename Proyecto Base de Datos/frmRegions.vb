@@ -65,10 +65,8 @@ Public Class frmRegions
         If txtRegionName.Text = "" Then
             MessageBox.Show("Detos no encontrados")
         Else
-            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtRegionName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-            If selection.Cancel Or selection.No Then
-                MessageBox.Show("Operación cancelada")
-            Else
+            Dim selection As DialogResult = MessageBox.Show("Realmente desea eliminar a: " & txtRegionName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection = DialogResult.Yes Then
                 Try
                     command = New OracleCommand("DELETE FROM regions WHERE region_id=" & txtRegionId.Text, conection)
                     Dim dataAdapter = New OracleDataAdapter
@@ -78,6 +76,8 @@ Public Class frmRegions
                 Catch ex As Exception
                     MessageBox.Show("ERROR: El registro no ha podido eliminar")
                 End Try
+            Else
+                MessageBox.Show("Operación cancelada")
             End If
         End If
         conection.Close

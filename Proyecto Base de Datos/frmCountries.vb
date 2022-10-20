@@ -85,10 +85,8 @@ Public Class frmCountries
         If txtCountryName.Text = "" Then
             MessageBox.Show("Datos no encontrados")
         Else
-            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtCountryName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-            If selection.No Or selection.Cancel Then
-                MessageBox.Show("Operación cancelada")
-            Else
+            Dim selection As DialogResult = MessageBox.Show("Realmente desea eliminar a: " & txtCountryName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection = DialogResult.Yes Then
                 Try
                     command = New OracleCommand("DELETE FROM countries WHERE country_id=" & "'" & txtCountryId.Text & "'", conection)
                     Dim dataAdapter = New OracleDataAdapter
@@ -98,6 +96,8 @@ Public Class frmCountries
                 Catch ex As Exception
                     MessageBox.Show("ERROR: El registro no ha podido eliminar")
                 End Try
+            Else
+                MessageBox.Show("Operación cancelada")
             End If
         End If
         conection.Close

@@ -65,6 +65,9 @@ Public Class frmEmployees
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         conection.Open
+        If txtCommissionPct.Text = "" Then
+            txtCommissionPct.Text = 0
+        End If
         Dim command = New OracleCommand("INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,commission_pct,manager_id,department_id) 
             VALUES(" & txtEmployeeId.Text & ",'" & txtFirstName.Text & "','" & txtLastName.Text & "','" & txtEmail.Text & "',
             '" & txtPhoneNumber.Text & "','" & txtHireDate.Text & "','" & txtJobId.Text & "'," & txtSalary.Text & "," & txtCommissionPct.Text & "," & txtManagerId.Text & ",
@@ -77,6 +80,9 @@ Public Class frmEmployees
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         Dim command As OracleCommand
         conection.Open
+        If txtCommissionPct.Text = "" Then
+            txtCommissionPct.Text = 0
+        End If
         Try
             command = New OracleCommand("UPDATE employees SET first_name='" & txtFirstName.Text & "',last_name='" & txtLastName.Text & "',
                 email='" & txtEmail.Text & "',phone_number='" & txtPhoneNumber.Text & "',hire_date='" & txtHireDate.Text & "',job_id='" & txtJobId.Text & "',
@@ -89,6 +95,7 @@ Public Class frmEmployees
         Catch ex As Exception
             MessageBox.Show("Error al actualizar registro", "Actualizar Registro")
         End Try
+        conection.Close
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
@@ -112,11 +119,9 @@ Public Class frmEmployees
         If txtFirstName.Text = "" And txtLastName.Text = "" Then
             MessageBox.Show("Datos no enconrados")
         Else
-            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtFirstName.Text &
+            Dim selection As DialogResult = MessageBox.Show("Realmente desea eliminar a: " & txtFirstName.Text &
                               " " & txtLastName.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-            If selection.No Or selection.Cancel Then
-                MessageBox.Show("Operación cancelada")
-            Else
+            If selection = DialogResult.Yes Then
                 Try
                     command = New OracleCommand("DELETE FROM employees WHERE employee_id=" & txtEmployeeId.Text, conection)
                     Dim dataAdapter = New OracleDataAdapter
@@ -126,6 +131,8 @@ Public Class frmEmployees
                 Catch ex As Exception
                     MessageBox.Show("ERROR: El registro no ha podido eliminar")
                 End Try
+            Else
+                MessageBox.Show("Operación cancelada")
             End If
         End If
         conection.Close

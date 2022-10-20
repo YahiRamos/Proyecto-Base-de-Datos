@@ -65,10 +65,8 @@ Public Class frmJobs
         If txtJobTitle.Text = "" Then
             MessageBox.Show("Datos no encontrados")
         Else
-            Dim selection = MessageBox.Show("Realmente desea eliminar a: " & txtJobId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
-            If selection.No Or selection.Cancel Then
-                MessageBox.Show("Operación cancelada")
-            Else
+            Dim selection As DialogResult = MessageBox.Show("Realmente desea eliminar a: " & txtJobId.Text, "Eliminar", MessageBoxButtons.YesNoCancel)
+            If selection = DialogResult.Yes Then
                 Try
                     command = New OracleCommand("DELETE FROM jobs WHERE job_id='" & txtJobId.Text & "'", conection)
                     Dim dataAdapter = New OracleDataAdapter
@@ -78,6 +76,8 @@ Public Class frmJobs
                 Catch ex As Exception
                     MessageBox.Show("ERROR: El registro no ha podido eliminar")
                 End Try
+            Else
+                MessageBox.Show("Operación cancelada")
             End If
         End If
         conection.Close
