@@ -22,6 +22,7 @@ Partial Class frmCountries
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.brnClean = New System.Windows.Forms.Button()
@@ -39,8 +40,13 @@ Partial Class frmCountries
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnBackMenu = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.dataGridViewTable = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.dataGridViewTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -204,12 +210,45 @@ Partial Class frmCountries
         Me.btnBackMenu.Text = "Regresar al Menu"
         Me.btnBackMenu.UseVisualStyleBackColor = True
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.btnRefresh)
+        Me.GroupBox3.Controls.Add(Me.dataGridViewTable)
+        Me.GroupBox3.Location = New System.Drawing.Point(302, 12)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(303, 446)
+        Me.GroupBox3.TabIndex = 7
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Datos de tabla"
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.Location = New System.Drawing.Point(69, 399)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(171, 38)
+        Me.btnRefresh.TabIndex = 1
+        Me.btnRefresh.Text = "Refrescar"
+        Me.btnRefresh.UseVisualStyleBackColor = True
+        '
+        'dataGridViewTable
+        '
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent
+        Me.dataGridViewTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dataGridViewTable.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.dataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataGridViewTable.Location = New System.Drawing.Point(6, 22)
+        Me.dataGridViewTable.Name = "dataGridViewTable"
+        Me.dataGridViewTable.RowTemplate.Height = 25
+        Me.dataGridViewTable.Size = New System.Drawing.Size(291, 355)
+        Me.dataGridViewTable.TabIndex = 0
+        '
         'frmCountries
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(308, 461)
+        Me.ClientSize = New System.Drawing.Size(617, 461)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btnBackMenu)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -221,6 +260,8 @@ Partial Class frmCountries
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.dataGridViewTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -242,4 +283,7 @@ Partial Class frmCountries
     Friend WithEvents btnBackMenu As Button
     Friend WithEvents btnEliminar As Button
     Friend WithEvents brnClean As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents btnRefresh As Button
+    Friend WithEvents dataGridViewTable As DataGridView
 End Class

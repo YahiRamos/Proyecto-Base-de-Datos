@@ -7,6 +7,14 @@ Public Class frmRegions
     Dim conection = New OracleConnection("Data Source = 127.0.0.1;User ID=hr;Password=hr;")
     Private Sub frmRegions_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         userInterfaceUpdater.defaultConfigFrmRegions()
+        conection.Open
+        Dim command = New OracleCommand("SELECT * FROM regions", conection)
+        Dim adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim dataTable = New DataTable
+        adapter.Fill(dataTable)
+        dataGridViewTable.DataSource = dataTable
+        conection.Close
     End Sub
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
         Close()
@@ -103,5 +111,16 @@ Public Class frmRegions
         If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
             MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
         End If
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        conection.Open
+        Dim command = New OracleCommand("SELECT * FROM regions", conection)
+        Dim adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim dataTable = New DataTable
+        adapter.Fill(dataTable)
+        dataGridViewTable.DataSource = dataTable
+        conection.Close
     End Sub
 End Class

@@ -8,6 +8,14 @@ Public Class frmJobs
 
     Private Sub frmJobs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         userInterfaceUpdater.defaultConfigFrmJobs()
+        conection.Open
+        Dim command = New OracleCommand("SELECT * FROM jobs", conection)
+        Dim adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim dataTable = New DataTable
+        adapter.Fill(dataTable)
+        dataGridViewTable.DataSource = dataTable
+        conection.Close
     End Sub
 
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
@@ -117,5 +125,16 @@ Public Class frmJobs
         If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
             MessageBox.Show("Solo Puede digitar numeros en este campo", "Error de Tipo")
         End If
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        conection.Open
+        Dim command = New OracleCommand("SELECT * FROM jobs", conection)
+        Dim adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim dataTable = New DataTable
+        adapter.Fill(dataTable)
+        dataGridViewTable.DataSource = dataTable
+        conection.Close
     End Sub
 End Class

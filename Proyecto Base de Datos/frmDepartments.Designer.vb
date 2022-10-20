@@ -22,6 +22,7 @@ Partial Class frmDepartments
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBackMenu = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtLocationId = New System.Windows.Forms.TextBox()
@@ -41,8 +42,13 @@ Partial Class frmDepartments
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
         Me.cbOpciones = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.dataGridViewTable = New System.Windows.Forms.DataGridView()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.dataGridViewTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnBackMenu
@@ -225,12 +231,45 @@ Partial Class frmDepartments
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Seleccione una opción"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.btnRefresh)
+        Me.GroupBox3.Controls.Add(Me.dataGridViewTable)
+        Me.GroupBox3.Location = New System.Drawing.Point(302, 13)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(333, 476)
+        Me.GroupBox3.TabIndex = 19
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Datos de tabla"
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.Location = New System.Drawing.Point(83, 427)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(171, 38)
+        Me.btnRefresh.TabIndex = 1
+        Me.btnRefresh.Text = "Refrescar"
+        Me.btnRefresh.UseVisualStyleBackColor = True
+        '
+        'dataGridViewTable
+        '
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent
+        Me.dataGridViewTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dataGridViewTable.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.dataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataGridViewTable.Location = New System.Drawing.Point(6, 22)
+        Me.dataGridViewTable.Name = "dataGridViewTable"
+        Me.dataGridViewTable.RowTemplate.Height = 25
+        Me.dataGridViewTable.Size = New System.Drawing.Size(321, 376)
+        Me.dataGridViewTable.TabIndex = 0
+        '
         'frmDepartments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(308, 493)
+        Me.ClientSize = New System.Drawing.Size(647, 493)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btnBackMenu)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -242,6 +281,8 @@ Partial Class frmDepartments
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.dataGridViewTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -265,4 +306,7 @@ Partial Class frmDepartments
     Friend WithEvents cbOpciones As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnClean As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents btnRefresh As Button
+    Friend WithEvents dataGridViewTable As DataGridView
 End Class
