@@ -22,7 +22,7 @@ Partial Class frmEmployees
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBackMenu = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtHireDate = New System.Windows.Forms.TextBox()
@@ -51,6 +51,7 @@ Partial Class frmEmployees
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnReportes = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnClean = New System.Windows.Forms.Button()
         Me.btnSeleccionarOpcion = New System.Windows.Forms.Button()
@@ -59,6 +60,8 @@ Partial Class frmEmployees
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dataGridViewTable = New System.Windows.Forms.DataGridView()
+        Me.cbJobId = New System.Windows.Forms.ComboBox()
+        Me.cbDepartmentId = New System.Windows.Forms.ComboBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -67,15 +70,17 @@ Partial Class frmEmployees
         '
         'btnBackMenu
         '
-        Me.btnBackMenu.Location = New System.Drawing.Point(251, 448)
+        Me.btnBackMenu.Location = New System.Drawing.Point(12, 438)
         Me.btnBackMenu.Name = "btnBackMenu"
-        Me.btnBackMenu.Size = New System.Drawing.Size(160, 33)
+        Me.btnBackMenu.Size = New System.Drawing.Size(157, 51)
         Me.btnBackMenu.TabIndex = 21
         Me.btnBackMenu.Text = "Regresar al Menu"
         Me.btnBackMenu.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cbDepartmentId)
+        Me.GroupBox2.Controls.Add(Me.cbJobId)
         Me.GroupBox2.Controls.Add(Me.txtHireDate)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.txtDepartmentId)
@@ -127,7 +132,7 @@ Partial Class frmEmployees
         '
         'txtDepartmentId
         '
-        Me.txtDepartmentId.Location = New System.Drawing.Point(447, 223)
+        Me.txtDepartmentId.Location = New System.Drawing.Point(447, 228)
         Me.txtDepartmentId.Name = "txtDepartmentId"
         Me.txtDepartmentId.Size = New System.Drawing.Size(157, 23)
         Me.txtDepartmentId.TabIndex = 23
@@ -323,6 +328,15 @@ Partial Class frmEmployees
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Employee ID"
         '
+        'btnReportes
+        '
+        Me.btnReportes.Location = New System.Drawing.Point(459, 438)
+        Me.btnReportes.Name = "btnReportes"
+        Me.btnReportes.Size = New System.Drawing.Size(157, 51)
+        Me.btnReportes.TabIndex = 26
+        Me.btnReportes.Text = "Reportes"
+        Me.btnReportes.UseVisualStyleBackColor = True
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnClean)
@@ -385,17 +399,17 @@ Partial Class frmEmployees
         '
         'btnRefresh
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(156, 424)
+        Me.btnRefresh.Location = New System.Drawing.Point(6, 424)
         Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(171, 38)
+        Me.btnRefresh.Size = New System.Drawing.Size(450, 38)
         Me.btnRefresh.TabIndex = 1
         Me.btnRefresh.Text = "Refrescar"
         Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'dataGridViewTable
         '
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Transparent
-        Me.dataGridViewTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent
+        Me.dataGridViewTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dataGridViewTable.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dataGridViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataGridViewTable.Location = New System.Drawing.Point(6, 22)
@@ -404,12 +418,29 @@ Partial Class frmEmployees
         Me.dataGridViewTable.Size = New System.Drawing.Size(450, 392)
         Me.dataGridViewTable.TabIndex = 0
         '
+        'cbJobId
+        '
+        Me.cbJobId.FormattingEnabled = True
+        Me.cbJobId.Location = New System.Drawing.Point(447, 40)
+        Me.cbJobId.Name = "cbJobId"
+        Me.cbJobId.Size = New System.Drawing.Size(157, 23)
+        Me.cbJobId.TabIndex = 26
+        '
+        'cbDepartmentId
+        '
+        Me.cbDepartmentId.FormattingEnabled = True
+        Me.cbDepartmentId.Location = New System.Drawing.Point(447, 228)
+        Me.cbDepartmentId.Name = "cbDepartmentId"
+        Me.cbDepartmentId.Size = New System.Drawing.Size(157, 23)
+        Me.cbDepartmentId.TabIndex = 27
+        '
         'frmEmployees
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1102, 493)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnReportes)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btnBackMenu)
         Me.Controls.Add(Me.GroupBox2)
@@ -464,4 +495,7 @@ Partial Class frmEmployees
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents btnRefresh As Button
     Friend WithEvents dataGridViewTable As DataGridView
+    Friend WithEvents btnReportes As Button
+    Friend WithEvents cbDepartmentId As ComboBox
+    Friend WithEvents cbJobId As ComboBox
 End Class

@@ -47,6 +47,8 @@ Partial Class frmJobHistory
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dataGridViewTable = New System.Windows.Forms.DataGridView()
+        Me.cbJobId = New System.Windows.Forms.ComboBox()
+        Me.cbDepartmentId = New System.Windows.Forms.ComboBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -64,6 +66,8 @@ Partial Class frmJobHistory
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cbDepartmentId)
+        Me.GroupBox2.Controls.Add(Me.cbJobId)
         Me.GroupBox2.Controls.Add(Me.txtDepartmentId)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.txtJobId)
@@ -283,6 +287,22 @@ Partial Class frmJobHistory
         Me.dataGridViewTable.Size = New System.Drawing.Size(321, 427)
         Me.dataGridViewTable.TabIndex = 0
         '
+        'cbJobId
+        '
+        Me.cbJobId.FormattingEnabled = True
+        Me.cbJobId.Location = New System.Drawing.Point(108, 175)
+        Me.cbJobId.Name = "cbJobId"
+        Me.cbJobId.Size = New System.Drawing.Size(164, 23)
+        Me.cbJobId.TabIndex = 4
+        '
+        'cbDepartmentId
+        '
+        Me.cbDepartmentId.FormattingEnabled = True
+        Me.cbDepartmentId.Location = New System.Drawing.Point(108, 220)
+        Me.cbDepartmentId.Name = "cbDepartmentId"
+        Me.cbDepartmentId.Size = New System.Drawing.Size(164, 23)
+        Me.cbDepartmentId.TabIndex = 14
+        '
         'frmJobHistory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -331,4 +351,6 @@ Partial Class frmJobHistory
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents btnRefresh As Button
     Friend WithEvents dataGridViewTable As DataGridView
+    Friend WithEvents cbDepartmentId As ComboBox
+    Friend WithEvents cbJobId As ComboBox
 End Class

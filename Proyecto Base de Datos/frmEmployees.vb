@@ -1,4 +1,5 @@
-﻿Imports Oracle.ManagedDataAccess.Client
+﻿Imports System.Reflection.Metadata
+Imports Oracle.ManagedDataAccess.Client
 
 Public Class frmEmployees
 
@@ -13,6 +14,26 @@ Public Class frmEmployees
         Dim dataTable = New DataTable
         adapter.Fill(dataTable)
         dataGridViewTable.DataSource = dataTable
+
+
+        command = New OracleCommand("SELECT * FROM jobs", conection)
+        adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim data = New DataSet
+        adapter.Fill(data)
+        cbJobId.DataSource = data.Tables(0)
+        cbJobId.DisplayMember = "job_id"
+        cbJobId.ValueMember = "job_id"
+
+        command = New OracleCommand("SELECT * FROM departments", conection)
+        adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        data = New DataSet
+        adapter.Fill(data)
+        cbDepartmentId.DataSource = data.Tables(0)
+        cbDepartmentId.DisplayMember = "department_id"
+        cbDepartmentId.ValueMember = "department_id"
+
         conection.Close
     End Sub
 
@@ -56,11 +77,11 @@ Public Class frmEmployees
                 btnVerDatos.Visible = False
                 btnModificar.Visible = True
                 txtCommissionPct.Enabled = True
-                txtDepartmentId.Enabled = True
+                cbDepartmentId.Visible = True
                 txtEmail.Enabled = True
                 txtFirstName.Enabled = True
                 txtHireDate.Enabled = True
-                txtJobId.Enabled = True
+                cbJobId.Visible = True
                 txtLastName.Enabled = True
                 txtManagerId.Enabled = True
                 txtPhoneNumber.Enabled = True
@@ -78,8 +99,8 @@ Public Class frmEmployees
         End If
         Dim command = New OracleCommand("INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,commission_pct,manager_id,department_id) 
             VALUES(" & txtEmployeeId.Text & ",'" & txtFirstName.Text & "','" & txtLastName.Text & "','" & txtEmail.Text & "',
-            '" & txtPhoneNumber.Text & "','" & txtHireDate.Text & "','" & txtJobId.Text & "'," & txtSalary.Text & "," & txtCommissionPct.Text & "," & txtManagerId.Text & ",
-            " & txtDepartmentId.Text & ")", conection)
+            '" & txtPhoneNumber.Text & "','" & txtHireDate.Text & "','" & cbJobId.Text & "'," & txtSalary.Text & "," & txtCommissionPct.Text & "," & txtManagerId.Text & ",
+            " & cbDepartmentId.Text & ")", conection)
         command.ExecuteNonQuery()
         MessageBox.Show("Registro agregado correctamente")
         conection.Close
@@ -93,9 +114,9 @@ Public Class frmEmployees
         End If
         Try
             command = New OracleCommand("UPDATE employees SET first_name='" & txtFirstName.Text & "',last_name='" & txtLastName.Text & "',
-                email='" & txtEmail.Text & "',phone_number='" & txtPhoneNumber.Text & "',hire_date='" & txtHireDate.Text & "',job_id='" & txtJobId.Text & "',
+                email='" & txtEmail.Text & "',phone_number='" & txtPhoneNumber.Text & "',hire_date='" & txtHireDate.Text & "',job_id='" & cbJobId.Text & "',
                 salary=" & txtSalary.Text & ",commission_pct=" & txtCommissionPct.Text & ",manager_id=" & txtManagerId.Text & ",
-                department_id=" & txtDepartmentId.Text & " WHERE employee_id=" & txtEmployeeId.Text, conection)
+                department_id=" & cbDepartmentId.Text & " WHERE employee_id=" & txtEmployeeId.Text, conection)
             Dim dataAdapter = New OracleDataAdapter
             dataAdapter.UpdateCommand = command
             dataAdapter.UpdateCommand.ExecuteNonQuery()
@@ -190,5 +211,10 @@ Public Class frmEmployees
         adapter.Fill(dataTable)
         dataGridViewTable.DataSource = dataTable
         conection.Close
+    End Sub
+
+    Private Sub btnReportes_Click(sender As Object, e As EventArgs) Handles btnReportes.Click
+        frmReportes.Visible = True
+        Hide()
     End Sub
 End Class

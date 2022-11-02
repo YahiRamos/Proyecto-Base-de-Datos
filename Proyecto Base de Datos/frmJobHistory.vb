@@ -13,6 +13,25 @@ Public Class frmJobHistory
         Dim dataTable = New DataTable
         adapter.Fill(dataTable)
         dataGridViewTable.DataSource = dataTable
+
+        command = New OracleCommand("SELECT * FROM jobs", conection)
+        adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        Dim data = New DataSet
+        adapter.Fill(data)
+        cbJobId.DataSource = data.Tables(0)
+        cbJobId.DisplayMember = "job_id"
+        cbJobId.ValueMember = "job_id"
+
+        command = New OracleCommand("SELECT * FROM departments", conection)
+        adapter = New OracleDataAdapter
+        adapter.SelectCommand = command
+        data = New DataSet
+        adapter.Fill(data)
+        cbDepartmentId.DataSource = data.Tables(0)
+        cbDepartmentId.DisplayMember = "department_id"
+        cbDepartmentId.ValueMember = "department_id"
+
         conection.Close
     End Sub
     Private Sub btnBackMenu_Click(sender As Object, e As EventArgs) Handles btnBackMenu.Click
@@ -47,9 +66,9 @@ Public Class frmJobHistory
             If cbOpciones.SelectedItem.ToString.Equals("Modificar Registro") Then
                 btnVerDatos.Visible = False
                 btnModificar.Visible = True
-                txtDepartmentId.Enabled = True
+                cbDepartmentId.Visible = True
                 txtEndDate.Enabled = True
-                txtJobId.Enabled = True
+                cbJobId.Visible = True
                 MessageBox.Show("Datos encontrados", "Actualizar Registro")
             End If
         End If
@@ -58,7 +77,8 @@ Public Class frmJobHistory
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         conection.Open
-        Dim command = New OracleCommand("INSERT INTO job_history(employee_id,start_date,end_date,job_id,department_id) VALUES(" & txtEmployeeId.Text & ",'" & txtStartDate.Text & "','" & txtEndDate.Text & "','" & txtJobId.Text & "'," & txtDepartmentId.Text & ")", conection)
+        Dim command = New OracleCommand("INSERT INTO job_history(employee_id,start_date,end_date,job_id,department_id) 
+            VALUES(" & txtEmployeeId.Text & ",'" & txtStartDate.Text & "','" & txtEndDate.Text & "','" & cbJobId.Text & "'," & cbDepartmentId.Text & ")", conection)
         command.ExecuteNonQuery()
         MessageBox.Show("Registro agregado correctamente")
         conection.Close
@@ -68,7 +88,8 @@ Public Class frmJobHistory
         Dim command As OracleCommand
         conection.Open
         Try
-            command = New OracleCommand("UPDATE job_history SET end_date='" & txtEndDate.Text & "',job_id='" & txtJobId.Text & "',department_id=" & txtDepartmentId.Text & " WHERE employee_id=" & txtEmployeeId.Text & " AND start_date='" & txtStartDate.Text & "'", conection)
+            command = New OracleCommand("UPDATE job_history SET end_date='" & txtEndDate.Text & "',job_id='" & cbJobId.Text & "'
+            ,department_id=" & cbDepartmentId.Text & " WHERE employee_id=" & txtEmployeeId.Text & " AND start_date='" & txtStartDate.Text & "'", conection)
             Dim dataAdapter = New OracleDataAdapter
             dataAdapter.UpdateCommand = command
             dataAdapter.UpdateCommand.ExecuteNonQuery()

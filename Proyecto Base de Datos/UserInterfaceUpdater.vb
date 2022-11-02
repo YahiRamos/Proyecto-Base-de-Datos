@@ -54,6 +54,8 @@ Public Class UserInterfaceUpdater
         frmEmployees.btnModificar.Visible = False
         frmEmployees.btnRegistrar.Visible = False
         frmEmployees.btnVerDatos.Visible = False
+        frmEmployees.cbJobId.Visible = False
+        frmEmployees.cbDepartmentId.Visible = False
         frmEmployees.txtCommissionPct.Enabled = False
         frmEmployees.txtDepartmentId.Enabled = False
         frmEmployees.txtEmail.Enabled = False
@@ -81,6 +83,8 @@ Public Class UserInterfaceUpdater
     Public Sub defaultConfigFrmJobHistory()
 
         frmJobHistory.btnEliminar.Visible = False
+        frmJobHistory.cbJobId.Visible = False
+        frmJobHistory.cbDepartmentId.Visible = False
         frmJobHistory.btnModificar.Visible = False
         frmJobHistory.btnRegistrar.Visible = False
         frmJobHistory.btnVerDatos.Visible = False
@@ -239,12 +243,12 @@ Public Class UserInterfaceUpdater
         ElseIf opcion.Equals("Agregar Registro") Then
             frmEmployees.btnRegistrar.Visible = True
             frmEmployees.txtCommissionPct.Enabled = True
-            frmEmployees.txtDepartmentId.Enabled = True
+            frmEmployees.cbDepartmentId.Visible = True
             frmEmployees.txtEmail.Enabled = True
             frmEmployees.txtEmployeeId.Enabled = True
             frmEmployees.txtFirstName.Enabled = True
             frmEmployees.txtHireDate.Enabled = True
-            frmEmployees.txtJobId.Enabled = True
+            frmEmployees.cbJobId.Visible = True
             frmEmployees.txtLastName.Enabled = True
             frmEmployees.txtManagerId.Enabled = True
             frmEmployees.txtPhoneNumber.Enabled = True
@@ -267,10 +271,10 @@ Public Class UserInterfaceUpdater
             frmJobHistory.txtStartDate.Enabled = True
         ElseIf opcion.Equals("Agregar Registro") Then
             frmJobHistory.btnRegistrar.Visible = True
-            frmJobHistory.txtDepartmentId.Enabled = True
+            frmJobHistory.cbDepartmentId.Visible = True
             frmJobHistory.txtEmployeeId.Enabled = True
             frmJobHistory.txtEndDate.Enabled = True
-            frmJobHistory.txtJobId.Enabled = True
+            frmJobHistory.cbJobId.Visible = True
             frmJobHistory.txtStartDate.Enabled = True
         ElseIf opcion.Equals("Modificar Registro") Then
             frmJobHistory.btnVerDatos.Visible = True
