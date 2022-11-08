@@ -77,10 +77,14 @@ Public Class frmJobHistory
 
     Private Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         conection.Open
-        Dim command = New OracleCommand("INSERT INTO job_history(employee_id,start_date,end_date,job_id,department_id) 
+        Try
+            Dim command = New OracleCommand("INSERT INTO job_history(employee_id,start_date,end_date,job_id,department_id) 
             VALUES(" & txtEmployeeId.Text & ",'" & txtStartDate.Text & "','" & txtEndDate.Text & "','" & cbJobId.Text & "'," & cbDepartmentId.Text & ")", conection)
-        command.ExecuteNonQuery()
-        MessageBox.Show("Registro agregado correctamente")
+            command.ExecuteNonQuery()
+            MessageBox.Show("Registro agregado correctamente")
+        Catch ex As Exception
+            MessageBox.Show("Error al insertar registro", "Insertar Registro")
+        End Try
         conection.Close
     End Sub
 

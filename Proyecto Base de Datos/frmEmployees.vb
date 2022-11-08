@@ -1,8 +1,12 @@
-﻿Imports System.Reflection.Metadata
-Imports Oracle.ManagedDataAccess.Client
+﻿Imports Oracle.ManagedDataAccess.Client
 
 Public Class frmEmployees
-
+    Private Function department_id() As String
+        Return "SELECT department_id FROM departments WHERE department_name='" & cbDepartmentId.Text & "'"
+    End Function
+    Private Function job_id() As String
+        Return "SELECT job_id FROM jobs WHERE job_title='" & cbJobId.Text & "'"
+    End Function
     Dim userInterfaceUpdater As New UserInterfaceUpdater()
     Dim conection = New OracleConnection("Data Source = 127.0.0.1;User ID=hr;Password=hr;")
     Private Sub frmEmployees_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -22,8 +26,8 @@ Public Class frmEmployees
         Dim data = New DataSet
         adapter.Fill(data)
         cbJobId.DataSource = data.Tables(0)
-        cbJobId.DisplayMember = "job_id"
-        cbJobId.ValueMember = "job_id"
+        cbJobId.DisplayMember = "job_title"
+        cbJobId.ValueMember = "job_title"
 
         command = New OracleCommand("SELECT * FROM departments", conection)
         adapter = New OracleDataAdapter
@@ -31,9 +35,8 @@ Public Class frmEmployees
         data = New DataSet
         adapter.Fill(data)
         cbDepartmentId.DataSource = data.Tables(0)
-        cbDepartmentId.DisplayMember = "department_id"
-        cbDepartmentId.ValueMember = "department_id"
-
+        cbDepartmentId.DisplayMember = "department_name"
+        cbDepartmentId.ValueMember = "department_name"
         conection.Close
     End Sub
 
@@ -53,18 +56,22 @@ Public Class frmEmployees
     End Sub
 
     Private Sub btnVerDatos_Click(sender As Object, e As EventArgs) Handles btnVerDatos.Click
-        Dim command = New OracleCommand("SELECT * FROM employees WHERE employee_id=" & txtEmployeeId.Text, conection)
+        Dim command = New OracleCommand("SELECT  EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL ,PHONE_NUMBER, HIRE_DATE, JOB_TITLE, SALARY, COMMISSION_PCT, e.MANAGER_ID, DEPARTMENT_NAME
+                                        FROM employees e,jobs j,departments d
+                                        WHERE employee_id=" & txtEmployeeId.Text & "
+                                        AND e.job_id=j.job_id
+                                        AND e.department_id=d.department_id", conection)
         command.Parameters.Add("employee_id ", txtEmployeeId.Text)
         conection.Open
         Dim dataReader As OracleDataReader
         dataReader = command.ExecuteReader
         If dataReader.Read Then
             txtCommissionPct.Text = dataReader.GetValue("COMMISSION_PCT").ToString
-            txtDepartmentId.Text = dataReader.GetValue("DEPARTMENT_ID").ToString
+            txtDepartmentId.Text = dataReader.GetValue("DEPARTMENT_NAME").ToString
             txtEmail.Text = dataReader.GetValue("EMAIL").ToString
             txtFirstName.Text = dataReader.GetValue("FIRST_NAME").ToString
             txtHireDate.Text = dataReader.GetValue("HIRE_DATE").ToString
-            txtJobId.Text = dataReader.GetValue("JOB_ID").ToString
+            txtJobId.Text = dataReader.GetValue("JOB_TITLE").ToString
             txtLastName.Text = dataReader.GetValue("LAST_NAME").ToString
             txtManagerId.Text = dataReader.GetValue("MANAGER_ID").ToString
             txtPhoneNumber.Text = dataReader.GetValue("PHONE_NUMBER").ToString
@@ -99,8 +106,8 @@ Public Class frmEmployees
         End If
         Dim command = New OracleCommand("INSERT INTO employees(employee_id,first_name,last_name,email,phone_number,hire_date,job_id,salary,commission_pct,manager_id,department_id) 
             VALUES(" & txtEmployeeId.Text & ",'" & txtFirstName.Text & "','" & txtLastName.Text & "','" & txtEmail.Text & "',
-            '" & txtPhoneNumber.Text & "','" & txtHireDate.Text & "','" & cbJobId.Text & "'," & txtSalary.Text & "," & txtCommissionPct.Text & "," & txtManagerId.Text & ",
-            " & cbDepartmentId.Text & ")", conection)
+            '" & txtPhoneNumber.Text & "','" & txtHireDate.Text & "',(" & job_id() & ")," & txtSalary.Text & "," & txtCommissionPct.Text & "," & txtManagerId.Text & ",
+            (" & department_id() & "))", conection)
         command.ExecuteNonQuery()
         MessageBox.Show("Registro agregado correctamente")
         conection.Close
@@ -114,9 +121,9 @@ Public Class frmEmployees
         End If
         Try
             command = New OracleCommand("UPDATE employees SET first_name='" & txtFirstName.Text & "',last_name='" & txtLastName.Text & "',
-                email='" & txtEmail.Text & "',phone_number='" & txtPhoneNumber.Text & "',hire_date='" & txtHireDate.Text & "',job_id='" & cbJobId.Text & "',
+                email='" & txtEmail.Text & "',phone_number='" & txtPhoneNumber.Text & "',hire_date='" & txtHireDate.Text & "',job_id=(" & job_id() & "),
                 salary=" & txtSalary.Text & ",commission_pct=" & txtCommissionPct.Text & ",manager_id=" & txtManagerId.Text & ",
-                department_id=" & cbDepartmentId.Text & " WHERE employee_id=" & txtEmployeeId.Text, conection)
+                department_id=(" & department_id() & ") WHERE employee_id=" & txtEmployeeId.Text, conection)
             Dim dataAdapter = New OracleDataAdapter
             dataAdapter.UpdateCommand = command
             dataAdapter.UpdateCommand.ExecuteNonQuery()

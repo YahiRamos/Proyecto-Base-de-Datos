@@ -25,6 +25,8 @@ Partial Class frmEmployees
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBackMenu = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cbDepartmentId = New System.Windows.Forms.ComboBox()
+        Me.cbJobId = New System.Windows.Forms.ComboBox()
         Me.txtHireDate = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtDepartmentId = New System.Windows.Forms.TextBox()
@@ -60,8 +62,6 @@ Partial Class frmEmployees
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dataGridViewTable = New System.Windows.Forms.DataGridView()
-        Me.cbJobId = New System.Windows.Forms.ComboBox()
-        Me.cbDepartmentId = New System.Windows.Forms.ComboBox()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -114,6 +114,22 @@ Partial Class frmEmployees
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Campos de Datos"
         '
+        'cbDepartmentId
+        '
+        Me.cbDepartmentId.FormattingEnabled = True
+        Me.cbDepartmentId.Location = New System.Drawing.Point(447, 228)
+        Me.cbDepartmentId.Name = "cbDepartmentId"
+        Me.cbDepartmentId.Size = New System.Drawing.Size(157, 23)
+        Me.cbDepartmentId.TabIndex = 27
+        '
+        'cbJobId
+        '
+        Me.cbJobId.FormattingEnabled = True
+        Me.cbJobId.Location = New System.Drawing.Point(447, 40)
+        Me.cbJobId.Name = "cbJobId"
+        Me.cbJobId.Size = New System.Drawing.Size(157, 23)
+        Me.cbJobId.TabIndex = 26
+        '
         'txtHireDate
         '
         Me.txtHireDate.Location = New System.Drawing.Point(115, 272)
@@ -151,9 +167,9 @@ Partial Class frmEmployees
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(338, 231)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(84, 15)
+        Me.Label7.Size = New System.Drawing.Size(105, 15)
         Me.Label7.TabIndex = 22
-        Me.Label7.Text = "Department ID"
+        Me.Label7.Text = "Department Name"
         '
         'txtManagerId
         '
@@ -216,9 +232,9 @@ Partial Class frmEmployees
         Me.Label11.Location = New System.Drawing.Point(338, 43)
         Me.Label11.Name = "Label11"
         Me.Label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label11.Size = New System.Drawing.Size(39, 15)
+        Me.Label11.Size = New System.Drawing.Size(50, 15)
         Me.Label11.TabIndex = 14
-        Me.Label11.Text = "Job ID"
+        Me.Label11.Text = "Job Title"
         '
         'txtPhoneNumber
         '
@@ -417,22 +433,6 @@ Partial Class frmEmployees
         Me.dataGridViewTable.RowTemplate.Height = 25
         Me.dataGridViewTable.Size = New System.Drawing.Size(450, 392)
         Me.dataGridViewTable.TabIndex = 0
-        '
-        'cbJobId
-        '
-        Me.cbJobId.FormattingEnabled = True
-        Me.cbJobId.Location = New System.Drawing.Point(447, 40)
-        Me.cbJobId.Name = "cbJobId"
-        Me.cbJobId.Size = New System.Drawing.Size(157, 23)
-        Me.cbJobId.TabIndex = 26
-        '
-        'cbDepartmentId
-        '
-        Me.cbDepartmentId.FormattingEnabled = True
-        Me.cbDepartmentId.Location = New System.Drawing.Point(447, 228)
-        Me.cbDepartmentId.Name = "cbDepartmentId"
-        Me.cbDepartmentId.Size = New System.Drawing.Size(157, 23)
-        Me.cbDepartmentId.TabIndex = 27
         '
         'frmEmployees
         '
